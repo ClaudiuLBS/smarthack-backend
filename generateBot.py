@@ -55,6 +55,12 @@ def add_mute_on_msg(user_msg: str, days: int, hours: int, minutes: int, seconds:
   input_file.close()
   return bot_fct  
 
+hard_coded_data = {
+  'on_msg': {
+
+  }
+}
+
 
 def generate_bot(client_id: str):
   #fisierul de output
@@ -78,4 +84,4 @@ def generate_bot(client_id: str):
   bot_file.write(bot_code)
   input_file.close()
   
-generate_bot('MTAzODUwMDY1NzU3OTE4NDIyOA.GAxqLF.INs279Ot1o9ZY_xKIAY0aWnZ9fPV7jk9Fo8jwY')
+generate_bot('MTAzODUwMDY1NzU3OTE4NDIyOA.Gc4d7a.'+'PJHSdS4eU2ffBhFScO2wH3_XMqEYi5R7qG3WYQ')
