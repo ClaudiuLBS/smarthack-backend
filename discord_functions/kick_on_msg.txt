@@ -1,0 +1,2 @@
+  if 'USER_MSG' in message.content:
+    await message.author.kick()

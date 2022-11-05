@@ -1,0 +1,3 @@
+  if 'USER_MSG' in message.content:
+    timeout_duration = timedelta(days=DAYS, hours=HOURS, minutes=MINUTES, seconds=SECONDS)
+    await message.author.timeout(timeout_duration)
