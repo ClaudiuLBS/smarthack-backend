@@ -62,18 +62,13 @@ def add_mute_on_msg(user_msg: str, days: int, hours: int, minutes: int, seconds:
   input_file.close()
   return bot_fct  
 
-# hard_coded_data = {
-#   {
-#     'user_msg': 'io',
-#     'action': 'msg',
-#     'params': ['some msg']
-#   },
-#   {
-#     'user_msg': 'ye',
-#     'action': 'mute',
-#     'params': [5,4,3,2]
-#   }
-# }
+def on_member_join(bot_msg: str):
+  input_file = open('discord_functions/on_member_join.txt')
+  bot_fct = input_file.read()
+  bot_fct = bot_fct.replace('BOT_MSG', bot_msg)
+
+  input_file.close()
+  return bot_fct
 
 
 def generate_bot(bot_data: dict):
@@ -90,6 +85,7 @@ def generate_bot(bot_data: dict):
 
   # ADD ON MESSAGE FUNCTIONS
   bot_code = add_on_msg_event(bot_code)
+  other_things = []
   for item in bot_data['features']:
     if item['action'] == 'msg':
       bot_code = add_function_to_bot(bot_code, add_msg_on_msg(item['user_msg'], item['params'][0]))
@@ -105,6 +101,12 @@ def generate_bot(bot_data: dict):
         item['params'][2],
         item['params'][3],
       ))
+    else:
+      other_things.append(item)
+  
+  for item in other_things:
+    if item['action'] == 'on_join':
+      bot_code = add_function_to_bot(bot_code, on_member_join(item['params'][0]))
 
 
   # ULTIMELE LINII DE COD

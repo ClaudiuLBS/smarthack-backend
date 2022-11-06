@@ -1,0 +1,3 @@
+@client.event
+async def on_member_join(member):
+  await member.send("BOT_MSG")
