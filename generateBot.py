@@ -1,9 +1,10 @@
 from flask import Flask
 from flask import request
+from flask_cors import CORS
 import subprocess
 
 app = Flask('')
-
+CORS(app)
 def add_function_to_bot(bot_code: str, function: str):
   # Adauga un anumit text in cod
   bot_code += f"\n{function}\n"
@@ -116,7 +117,7 @@ def generate_bot(bot_data: dict):
 def generateBot():
   data = request.json
   generate_bot(data)
-  subprocess.Popen(["python3",'MTAzODUwMDY1NzU3OTE4NDIyOA.Gc4d7a.'+'PJHSdS4eU2ffBhFScO2wH3_XMqEYi5R7qG3WYQ.py'])
+  subprocess.Popen(["python3",f"{data['token']}.py"])
   return data
 
 def run():
